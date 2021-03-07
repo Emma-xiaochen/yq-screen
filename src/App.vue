@@ -80,7 +80,7 @@ export default {
       font-size 18px
       font-weight bold
       position absolute
-      right 10px
+      right 30px
   .main
       height calc(100vh - 60px - 30vh)
       display flex
