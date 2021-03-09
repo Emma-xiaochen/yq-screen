@@ -22,42 +22,26 @@
       </div>
     </div>
     <div class="footer">
-      <div class="item">
-        <div class="content">
-          全国现有确诊趋势
-        </div>
-      </div>
-      <div class="item">
-        <div class="content">
-          全国疫情累计趋势
-        </div>
-      </div>
-      <div class="item">
-        <div class="content">
-          全国疫情新增趋势
-        </div>
-      </div>
-      <div class="item">
-        <div class="content">
-          治愈率/死亡率
-        </div>  
-      </div>  
+      <!-- 四个图表 -->
+      <four-charts></four-charts>
     </div>
   </div>
 </template>
 
 <script>
+import FourCharts from '@/components/FourCharts.vue'
 
 export default {
   name: 'App',
   components: {
+    FourCharts
   }
 }
 </script>
 
 <style lang="stylus">
-*
-  background rgba(0,0,0,.1)
+// *
+//   background rgba(0,0,0,.1)
 #app
   font-family Avenir, Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
@@ -82,7 +66,7 @@ export default {
       position absolute
       right 30px
   .main
-      height calc(100vh - 60px - 30vh)
+      height calc(100vh - 60px - 35vh)
       display flex
       justify-content space-between
       .news, .map, .rank 
@@ -92,13 +76,6 @@ export default {
         .content
           flex 1
   .footer
-    height 30vh
+    height 35vh
     display flex
-    justify-content space-between
-    .item 
-      flex 1
-      display flex
-      padding 10px
-      .content
-        flex 1 
 </style>
