@@ -4,6 +4,7 @@
 
 <script>
   export default {
+    // 第四步：接收父组件传过来的数据
     props: ['dataList'],
     data () {
       return {
@@ -12,7 +13,30 @@
       }
     },
     watch: {
-
+      dataList(newValue, oldValue) {
+        this.chartInstance.setOption({
+          xAxis: {
+            data: newValue.date
+          },
+          series: [
+            {
+              name: '累积确诊',
+              type: 'line',
+              data: newValue.addUpConfirm
+            },
+            {
+              name: '累积治愈',
+              type: 'line',
+              data: newValue.addUpHeal
+            },
+            {
+              name: '累积死亡',
+              type: 'line',
+              data: newValue.addUpDead
+            }
+          ]
+        })
+      }
     },
     mounted () {
       // 初始化图表
@@ -42,7 +66,7 @@
           },
           xAxis: {
             type: 'category',
-            data: [47367,23023,46757,38445,96600]
+            data: []
           },
           yAxis: {
             type: 'value'
@@ -57,19 +81,19 @@
               name: '累计确诊',
               type: 'line',
               color: '#FF7F50',
-              data: [59918,85167,56877,56100,21355]
+              data: []
             },
             {
               name: '累计治愈',
               type: 'line',
               color: '#00FF00',
-              data: [63861,28315,98475,60759,9501]
+              data: []
             },
             {
               name: '累计死亡',
               type: 'line',
               color: '#808080',
-              data: [34201,50718,27047,65286,9537]
+              data: []
             }
           ]
         }

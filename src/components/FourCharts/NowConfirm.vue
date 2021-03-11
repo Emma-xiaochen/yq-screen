@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    // 接收父组件传过来的数据
+    // 第四步：接收父组件传过来的数据
     props: ['dataList'],
     data () {
       return {
@@ -13,7 +13,7 @@
       }
     },
     watch: {
-      // 监听数据，更新图表
+      // 第五步：监听数据，更新图表
       dataList (newValue, oldValue) {
         if (newValue) {
           this.chartInstance.setOption({

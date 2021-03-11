@@ -4,11 +4,34 @@
 
 <script>
   export default {
+    // 第四步：接收父组件传过来的数据
     props: ['dataList'],
     data() {
       return {
         // 图标实例对象
         chartInstance: null
+      }
+    },
+    watch: {
+      // 第五步：监听数据，更新图表
+      dataList(newValue, oldValue) {
+        this.chartInstance.setOption({
+          xAxis: {
+            data: newValue.newAddDate
+          },
+          series: [
+            {
+              name: '新增确诊',
+              type: 'line',
+              data: newValue.newAddConfirm
+            },
+            {
+              name: '新增疑似',
+              type: 'line',
+              data: newValue.newAddSuspect
+            }
+          ]
+        })
       }
     },
     mounted () {
@@ -39,7 +62,7 @@
           },
           xAxis: {
             type: 'category',
-            data: [19192,81863,67067,54788,1740]
+            data: []
           },
           yAxis: {
             type: 'value'
@@ -64,7 +87,7 @@
                   }
                 ]
               },
-              data: [41921,9608,6435,3054,19600]
+              data: []
             },
             {
               name: '新增疑似',
@@ -80,7 +103,7 @@
                   }
                 ]
               },
-              data: [29183,13680,62829,14565,86027]
+              data: []
             }
           ]
         }

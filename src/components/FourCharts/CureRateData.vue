@@ -4,11 +4,34 @@
 
 <script>
   export default {
+    // 第四步：接收父组件传过来的数据
     props: ['dataList'],
     data() {
       return {
         // 图表实例对象
         chartInstance: null
+      }
+    },
+    watch: {
+      // 第五步：监听数据，更新图表
+      dataList(newValue, oldValue) {
+        this.chartInstance.setOption({
+          xAxis: {
+            data: newValue.date
+          },
+          series: [
+            {
+              name: '新增确诊',
+              type: 'line',
+              data: newValue.healRate
+            },
+            {
+              name: '新增疑似',
+              type: 'line',
+              data: newValue.deadRate
+            }
+          ]
+        })
       }
     },
     mounted() {
@@ -39,7 +62,7 @@
           },
           xAxis: {
             type: 'category',
-            data: [87174,40878,67003,10245,64873]
+            data: []
           },
           yAxis: {
             type: 'value'
@@ -64,7 +87,7 @@
                   }
                 ]
               },
-              data: [88266,19714,97984,88672,5117]
+              data: []
               },
             {
               name: '死亡率',
@@ -80,7 +103,7 @@
                   }
                 ]
               },
-              data: [45910,52563,59340,56479,71220]
+              data: []
             }
           ]
         }
